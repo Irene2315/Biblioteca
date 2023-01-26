@@ -12,14 +12,7 @@ public class Conector {
 	
 	protected Connection con;
 
-	
-	public Connection getConexion() {
-		return con;
-	}
 
-	public void setConexion(Connection conexion) {
-		this.con = conexion;
-	}
 	
 	public void conectar() {
 		try {
@@ -37,6 +30,14 @@ public class Conector {
 	
 	public void cerrar() throws SQLException {
 		con.close();
+	}
+	
+	public Connection getConexion() {
+		return con;
+	}
+
+	public void setConexion(Connection conexion) {
+		this.con = conexion;
 	}
 	
 	
