@@ -23,10 +23,10 @@ public class GestorBBDD extends Conector  {
 	public void eliminarLibro(int id) throws SQLException {
 		
 		preparedSt= con.prepareStatement("DELETE FROM libros WHERE `libros`.`id` = ?");
-		
+		//preparedSt.execute(preparedSt);
 	}
-	public Libro getLibro(int id) {
+	//public Libro getLibro(int id) {
 		
-	}
+	//}
 	
 }
