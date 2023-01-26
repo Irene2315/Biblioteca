@@ -1,11 +1,11 @@
 package gestor;
 
-import principal.BibliotecaApp;
+import principal.GestorBBDD;
 
 public class GestorBiblioteca {
 
 	public static void main(String[] args) {
-		BibliotecaApp.run();
+		GestorBBDD.run();
 
 	}
 

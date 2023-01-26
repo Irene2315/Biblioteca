@@ -2,7 +2,7 @@ package principal;
 
 import clases.Menu;
 
-public class BibliotecaApp {
+public class GestorBBDD {
 
 	public static void run() {
 		Menu.mostrarMenuPrincipal();
