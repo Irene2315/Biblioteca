@@ -5,6 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conector {
+	private static  final String HOST= "localhost";
+	private static final String BBDD= "biblioteca";
+	private static final String USERNAME="root";
+	private static final String PASSWORD="";
+	
 	protected Connection con;
 
 	
@@ -18,10 +23,7 @@ public class Conector {
 	
 	public void conectar() {
 		try {
-			final String HOST= "localhost";
-			final String BBDD= "arboles";
-			final String USERNAME="root";
-			final String PASSWORD="";
+			 
 			
 				Class.forName("com.mysql.jdbc.Driver");
 				
