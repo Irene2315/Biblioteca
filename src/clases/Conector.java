@@ -10,7 +10,7 @@ public class Conector {
 	private static final String USERNAME="root";
 	private static final String PASSWORD="";
 	
-	protected Connection con;
+	protected  Connection con;
 
 
 	
