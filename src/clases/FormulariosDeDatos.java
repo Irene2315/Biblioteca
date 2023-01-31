@@ -4,6 +4,8 @@ package clases;
 
 import java.util.Scanner;
 
+
+
 public class FormulariosDeDatos {
 	
 
@@ -63,4 +65,8 @@ public class FormulariosDeDatos {
 		
 		return id;
 	}
+
+
+
+
 }

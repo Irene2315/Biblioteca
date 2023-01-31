@@ -25,7 +25,9 @@ public class GestorBBDD extends Conector  {
 		preparedSt.execute();
 		
 	}
-	
+	public Libro modificarLibro (Libro libro) {
+		
+	}
 	public void eliminarLibro(int id) throws SQLException {
 		preparedSt = con.prepareStatement("DELETE FROM libros WHERE `libros`.`id` = ?");
 		preparedSt.setInt(1,id);

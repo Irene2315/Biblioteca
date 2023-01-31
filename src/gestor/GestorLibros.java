@@ -1,27 +1,41 @@
 package gestor;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
+import clases.FormulariosDeDatos;
+import clases.Libro;
 import clases.Menu;
 
 public class GestorLibros {
 
-	public static void run(Scanner scan) {
+	public static void run(Scanner scan) throws SQLException {
 
 		
 		int opcion;
-
+		 GestorBBDD gestorBBDD = new  GestorBBDD();
+		 Libro libro = new Libro();
+		 
 		do {
 			Menu.mostrarMenuLibros();
 			opcion = scan.nextInt();
 
 			switch (opcion) {
 			case Menu.INSERTAR_LIBRO:
-				System.out.println("Primera opcion selecionada");
-
+				
+				 libro = FormulariosDeDatos.pedirDatosLibro(scan);
+				 gestorBBDD.conectar();
+				 gestorBBDD.insertarLibro(libro);
+				 gestorBBDD.cerrar();
+				 
 				break;
+			case Menu.MODIFICAR_LIBRO:
+				
+				break;
+				
 			case Menu.ELIMINAR_LIBRO:
-				System.out.println("Segunda opcion selecionada");
+				
+				
 				break;
 				
 			case Menu.VER_LIBROS:

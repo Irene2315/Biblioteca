@@ -1,5 +1,6 @@
 package gestor;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import clases.Menu;
@@ -8,7 +9,7 @@ public class GestorBiblioteca {
 	
 	static Scanner scan = new Scanner (System.in);
 
-	public static void run() {
+	public static void run() throws SQLException {
 		int opcion;
 
 		do {
@@ -18,25 +19,23 @@ public class GestorBiblioteca {
 
 			switch (opcion) {
 			case Menu.GESTIONAR_LIBROS:
-				System.out.println("Primera opcion selecionada");
+				GestorLibros.run(scan);
 
 				break;
-			case OPCION_DOS:
-				System.out.println("Segunda opcion selecionada");
-				break;
-			case OPCION_TRES:
-				System.out.println("Tercera opcion selecinada ");
-				break;
-			case OPCION_CUATRO:
+			case Menu.GESTIONAR_SOCIOS:
+				GestorSocios.run(scan);
 
-				System.out.println("Cuarta opcion selecionada");
 				break;
-			case SALIR:
+			case Menu.GESTIONAR_PRESTAMOS:
+				System.out.println("modulo no disponible");
+				break;
+			
+			case Menu.SALIR:
 
 			}
 			System.out.println("");
-		} while (opcion_menu != SALIR);
-		teclado.close();
+		} while (opcion != Menu.SALIR);
+		scan.close();
 		
 	}
 
