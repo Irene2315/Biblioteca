@@ -1,8 +1,12 @@
-package clases;
+package gestor;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import clases.Conector;
+import clases.Libro;
+import clases.Socio;
 
 
 public class GestorBBDD extends Conector  {
