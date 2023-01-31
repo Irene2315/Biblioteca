@@ -31,6 +31,9 @@ public class GestorLibros {
 				break;
 			case Menu.MODIFICAR_LIBRO:
 				
+				libro = FormulariosDeDatos.modificarDatosLibro(libro, scan);
+				gestorBBDD.conectar();
+				
 				break;
 				
 			case Menu.ELIMINAR_LIBRO:
