@@ -4,9 +4,8 @@ import java.util.Scanner;
 
 import clases.Menu;
 
-public class GestorLibros {
-
-	public static void run(Scanner scan) {
+public class GestorSocios {
+public static void run(Scanner scan) {
 
 		
 		int opcion;
@@ -16,15 +15,15 @@ public class GestorLibros {
 			opcion = scan.nextInt();
 
 			switch (opcion) {
-			case Menu.INSERTAR_LIBRO:
+			case Menu.INSERTAR_SOCIO:
 				System.out.println("Primera opcion selecionada");
 
 				break;
-			case Menu.ELIMINAR_LIBRO:
+			case Menu.ELIMINAR_SOCIO:
 				System.out.println("Segunda opcion selecionada");
 				break;
 				
-			case Menu.VER_LIBROS:
+			case Menu.VER_SOCIOS:
 				System.out.println("Tercera opcion selecinada ");
 				break;
 			
@@ -36,5 +35,4 @@ public class GestorLibros {
 		
 
 	}
-
 }
