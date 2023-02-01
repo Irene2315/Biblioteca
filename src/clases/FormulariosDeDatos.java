@@ -10,11 +10,15 @@ public class FormulariosDeDatos {
 	
 
 	
+	
+
+
 	public static Libro pedirDatosLibro(Scanner scan) {
 		Libro libro = new Libro();
 		String titulo;
 		String autor;
 		int numPag;
+		scan.nextLine();
 		
 		System.out.println("Introduce el titulo del libro");
 		titulo= scan.nextLine();
@@ -29,7 +33,7 @@ public class FormulariosDeDatos {
 		
 		libro.setTitulo(titulo);
 		libro.setAutor(autor);
-		libro.setNum_pag(numPag);
+		libro.setNumPag(numPag);
 		
 		return libro;
 		
@@ -40,25 +44,28 @@ public class FormulariosDeDatos {
 		String nueboAutor;
 		int nueboNumPag;
 		
-		System.out.println("Introduce el titulo del libro");
+		scan.nextLine();
+		System.out.println("Introduce el nuebo titulo del libro");
 		nueboTitulo= scan.nextLine();
 		
 		
-		System.out.println("Introduce el autor del libro");
+		System.out.println("Introduce el nuebo autor del libro");
 		nueboAutor= scan.nextLine();
 		
 		
-		System.out.println("Introduce el número de páginas del libro");
+		System.out.println("Introduce el nuebo número de páginas del libro");
 		nueboNumPag=scan.nextInt();
 		
 		libro.setTitulo(nueboTitulo);
 		libro.setAutor(nueboAutor);
-		libro.setNum_pag(nueboNumPag);
+		libro.setNumPag(nueboNumPag);
 		
 		return libro;
 	}
 	
-	static int pedriIdLibro (Scanner scan) {
+	
+	
+	public static int pedirIdLibro (Scanner scan) {
 		int id;
 		System.out.println("Introduce la ID del libro");
 		id= scan.nextInt();

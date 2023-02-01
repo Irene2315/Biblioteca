@@ -6,12 +6,12 @@ public class Libro {
 	private String autor;
 	private int numPag;
 	
-	public Libro(int id, String titulo, String autor, int num_pag) {
+	public Libro(int id, String titulo, String autor, int numPag) {
 		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.autor = autor;
-		this.numPag = num_pag;
+		this.numPag = numPag;
 	}
 	
 	public Libro() {
@@ -42,11 +42,11 @@ public class Libro {
 		this.autor = autor;
 	}
 
-	public int getNum_pag() {
+	public int getNumPag() {
 		return numPag;
 	}
 
-	public void setNum_pag(int num_pag) {
+	public void setNumPag(int num_pag) {
 		this.numPag = num_pag;
 	}
 

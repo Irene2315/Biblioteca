@@ -3,6 +3,7 @@ package gestor;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import clases.Conector;
 import clases.Libro;
@@ -20,12 +21,25 @@ public class GestorBBDD extends Conector  {
 		preparedSt.setInt(1, libro.getId());
 		preparedSt.setString(2, libro.getTitulo());
 		preparedSt.setString(3, libro.getAutor());
-		preparedSt.setInt(4, libro.getNum_pag());
+		preparedSt.setInt(4, libro.getNumPag());
 		
 		preparedSt.execute();
 		
 	}
-	public Libro modificarLibro (Libro libro) {
+	public void modificarLibro(Libro libro) {
+		try {
+			preparedSt = con.prepareStatement("UPDATE libros SET titulo= ?,autor= ?,"
+					+ "num_pag= ? WHERE libros.id=?");
+			preparedSt.setString(1,libro.getTitulo());
+			preparedSt.setString(2,libro.getAutor());
+			preparedSt.setInt(3,libro.getNumPag());
+			preparedSt.setInt(4,libro.getId() );
+			
+			preparedSt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		
 	}
 	public void eliminarLibro(int id) throws SQLException {
@@ -34,22 +48,47 @@ public class GestorBBDD extends Conector  {
 		preparedSt.execute();
 	}
 	
-	public Libro getLibro(int id) throws SQLException {
+	public Libro getLibro(int id) {
 		Libro libroSelecion = new Libro();
-		preparedSt= con.prepareStatement("SELECT * FROM `libros` WHERE `id` = ?");
-		preparedSt.setInt(1,libroSelecion.getId());
-		
-		ResultSet resultado= preparedSt.executeQuery();
-		
-		if(resultado.next()) {
-			libroSelecion.setId(resultado.getInt("id"));
-			libroSelecion.setTitulo(resultado.getString("titulo"));
-			libroSelecion.setAutor(resultado.getString("autor"));
-			libroSelecion.setNum_pag(resultado.getInt("num_pag"));
+		try {
+			preparedSt= con.prepareStatement("SELECT * FROM `libros` WHERE `id` = ?");
+			preparedSt.setInt(1,id);
+			
+			ResultSet resultado= preparedSt.executeQuery();
+			
+			if(resultado.next()) {
+				libroSelecion.setId(resultado.getInt("id"));
+				libroSelecion.setTitulo(resultado.getString("titulo"));
+				libroSelecion.setAutor(resultado.getString("autor"));
+				libroSelecion.setNumPag(resultado.getInt("num_pag"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		
 		
 		return libroSelecion;
 		
+		
+	}
+	public ArrayList <Libro>  getLibros() throws SQLException {
+		preparedSt = con.prepareStatement("SELECT * FROM libros");
+		ResultSet resultado= preparedSt.executeQuery();
+		
+		ArrayList<Libro> libros= new ArrayList <Libro>();
+		Libro libro= new Libro();
+		
+		while(resultado.next()) {
+			libro = new Libro();
+			libro.setId(resultado.getInt(1));
+			libro.setTitulo(resultado.getString(2));
+			libro.setAutor(resultado.getString(3));
+			libro.setNumPag(resultado.getInt(4));
+			
+			libros.add(libro);
+		}
+		
+		return libros;
 		
 	}
 	

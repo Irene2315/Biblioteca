@@ -33,17 +33,20 @@ public class Menu {
 	}
 	
 	public static void mostrarMenuLibros() {
+		System.out.println("");
 		System.out.println("MENU LIBROS");
 		System.out.println("------------");
-		System.out.println("1. Isertar libro");
-		System.out.println("2. Eliminar libro");
-		System.out.println("3. Ver libros");
+		System.out.println("1. Insertar libro");
+		System.out.println("2. Modificar libro");
+		System.out.println("3. Eliminar libro");
+		System.out.println("4. Ver libros");
 		System.out.println("0. SALIR");
 		System.out.println("");
 		
 	}
 	
 	public static void mostrarMenuSocios() {
+		System.out.println("");
 		System.out.println("MENU SOCIOS");
 		System.out.println("-----------");
 		System.out.println("1. Ver socios");
@@ -52,6 +55,7 @@ public class Menu {
 	}
 	
 	public static void mostrarMenuPrestamos() {
+		System.out.println("");
 		System.out.println("MENU PRESTAMOS");
 		System.out.println("--------------");
 		System.out.println("1. Realizar prestamo");
