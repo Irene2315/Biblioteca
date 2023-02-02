@@ -25,6 +25,5 @@ public class Visor {
 			System.out.println(socio);
 		}
 	}
-	
 
 }
