@@ -13,6 +13,8 @@ import clases.Socio;
 public class GestorBBDD extends Conector  {
 	PreparedStatement preparedSt;
 	
+	//libros
+	
 	public void insertarLibro(Libro libro) throws SQLException {
 		
 		preparedSt= con.prepareStatement("INSERT INTO `libros` "
@@ -92,6 +94,10 @@ public class GestorBBDD extends Conector  {
 		
 	}
 	
+	
+	
+	//socios
+	
 	public void insertarSocio(Socio socio) throws SQLException {
 		preparedSt= con.prepareStatement("INSERT INTO `socios`"
 				+ "(`id`, `nombre`, `apellido`, "
@@ -110,6 +116,30 @@ public class GestorBBDD extends Conector  {
 		
 	}
 	
+	public void modificarSocio(Socio socio) {
+		try {
+			
+			preparedSt = con.prepareStatement("UPDATE socios SET nombre = ?, apellido = ?"
+					+", direccion = ?, poblacion = ?, "
+					+ "provincia = ?, dni = ? WHERE socios.id = ? ");
+			
+			preparedSt.setString(1,socio.getNombre());
+			preparedSt.setString(2,socio.getApellido());
+			preparedSt.setString(3,socio.getDireccion());
+			preparedSt.setString(4,socio.getPoblacion() );
+			preparedSt.setString(5,socio.getProvincia());
+			preparedSt.setString(6, socio.getDni());
+			preparedSt.setInt(7, socio.getId());
+			
+			
+			preparedSt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
 	public void eliminarSocio(int id ) throws SQLException {
 		preparedSt = con.prepareStatement("DELETE FROM socios WHERE `socios`.`id` = ?");
 		preparedSt.setInt(1,id);
@@ -119,7 +149,7 @@ public class GestorBBDD extends Conector  {
 	public Socio getSocio(int id) throws SQLException {
 		 Socio socioSelecion  = new Socio();
 		preparedSt= con.prepareStatement("SELECT * FROM `socios` WHERE `id` = ?");
-		preparedSt.setInt(1,socioSelecion.getId());
+		preparedSt.setInt(1,id);
 		
 		ResultSet resultado= preparedSt.executeQuery();
 		
@@ -136,6 +166,30 @@ public class GestorBBDD extends Conector  {
 		
 		return socioSelecion;
 		
+		
+	}
+	
+	public ArrayList <Socio>  getSocios() throws SQLException {
+		preparedSt = con.prepareStatement("SELECT * FROM socios");
+		ResultSet resultado= preparedSt.executeQuery();
+		
+		ArrayList<Socio> socios= new ArrayList <Socio>();
+		Socio socio= new Socio();
+		
+		while(resultado.next()) {
+			socio = new Socio();
+			socio.setId(resultado.getInt(1));
+			socio.setNombre(resultado.getString(2));
+			socio.setApellido(resultado.getString(3));
+			socio.setDireccion(resultado.getString(4));
+			socio.setPoblacion(resultado.getString(5));
+			socio.setProvincia(resultado.getString(6));
+			socio.setDni(resultado.getString(7));
+			
+			socios.add(socio);
+		}
+		
+		return socios;
 		
 	}
 	

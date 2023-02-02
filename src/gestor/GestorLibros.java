@@ -17,7 +17,9 @@ public class GestorLibros {
 		int opcion;
 		 GestorBBDD gestorBBDD = new  GestorBBDD();
 		 Libro libro = new Libro();
+		 //uso en las opcion
 		 int id;
+		 ArrayList<Libro> libros= new ArrayList <Libro>();
 		 
 		do {
 			Menu.mostrarMenuLibros();
@@ -56,7 +58,7 @@ public class GestorLibros {
 				break;
 				
 			case Menu.VER_LIBROS:
-				ArrayList<Libro> libros= new ArrayList <Libro>();
+				
 				
 				gestorBBDD.conectar();
 				libros=gestorBBDD.getLibros();

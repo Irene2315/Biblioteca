@@ -20,7 +20,7 @@ public class Visor {
 			System.out.println(mensaje);
 	}
 	
-	public static void mostrarUsuarios(ArrayList <Socio> socios) {
+	public static void mostrarSocios(ArrayList <Socio> socios) {
 		for (Socio socio : socios) {
 			System.out.println(socio);
 		}
