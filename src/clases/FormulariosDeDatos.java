@@ -40,6 +40,7 @@ public class FormulariosDeDatos {
 	}
 	
 	public static Libro modificarDatosLibro (Libro libro,Scanner scan) {
+		System.out.println("");
 		String nuevoTitulo;
 		String nuevoAutor;
 		int nuevoNumPag;

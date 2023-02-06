@@ -31,6 +31,7 @@ public class GestorLibros {
 				 libro = FormulariosDeDatos.pedirDatosLibro(scan);
 				 gestorBBDD.conectar();
 				 gestorBBDD.insertarLibro(libro);
+				 Visor.mostrarLibro(libro);
 				 gestorBBDD.cerrar();
 				 
 				break;
@@ -38,9 +39,13 @@ public class GestorLibros {
 				
 				id= FormulariosDeDatos.pedirIdLibro(scan);
 				gestorBBDD.conectar();
+				
 				libro = gestorBBDD.getLibro(id);
+				Visor.mostrarLibro(libro);
 				libro = FormulariosDeDatos.modificarDatosLibro(libro, scan);
 				gestorBBDD.modificarLibro(libro);
+				Visor.mostrarLibro(libro);
+				
 				gestorBBDD.cerrar();
 				
 				break;
@@ -50,7 +55,11 @@ public class GestorLibros {
 				
 				id=FormulariosDeDatos.pedirIdLibro(scan);
 				gestorBBDD.conectar();
+				
+				libro = gestorBBDD.getLibro(id);
+				Visor.mostrarLibro(libro);
 				gestorBBDD.eliminarLibro(id);
+				
 				gestorBBDD.cerrar();
 				
 				

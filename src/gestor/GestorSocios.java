@@ -28,6 +28,7 @@ public static void run(Scanner scan) throws SQLException {
 				socio = FormulariosDeDatos.pedirDatosSocio(scan);
 				gestorBBDD.conectar();
 				gestorBBDD.insertarSocio(socio);
+				Visor.mostrarSocio(socio);
 				gestorBBDD.cerrar();
 				
 				break;
@@ -37,8 +38,10 @@ public static void run(Scanner scan) throws SQLException {
 				id= FormulariosDeDatos.pedirIdSocio(scan);
 				gestorBBDD.conectar();
 				socio =gestorBBDD.getSocio(id);
+				Visor.mostrarSocio(socio);
 				socio = FormulariosDeDatos.modificarDatosSocio(socio, scan);
 				gestorBBDD.modificarSocio(socio);
+				Visor.mostrarSocio(socio);
 				gestorBBDD.cerrar();
 				
 				break;	
@@ -47,6 +50,9 @@ public static void run(Scanner scan) throws SQLException {
 				
 				id = FormulariosDeDatos.pedirIdSocio(scan);
 				gestorBBDD.conectar();
+				socio=gestorBBDD.getSocio(id);
+				Visor.mostrarSocio(socio);
+				
 				gestorBBDD.eliminarSocio(id);
 				gestorBBDD.cerrar();
 				

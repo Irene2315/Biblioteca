@@ -12,11 +12,11 @@ public class Visor {
 		}
 	}
 	
-	static void mostrarLibro(Libro libro) {
+	public static void mostrarLibro(Libro libro) {
 			System.out.println(libro);
 	}
 	
-	static void mostrarMensaje(String mensaje) {
+	public static void mostrarMensaje(String mensaje) {
 			System.out.println(mensaje);
 	}
 	
@@ -25,5 +25,10 @@ public class Visor {
 			System.out.println(socio);
 		}
 	}
+	
+	public static void mostrarSocio(Socio socio) {
+		System.out.println(socio);
+}
+	
 
 }
