@@ -1,15 +1,15 @@
 package clases;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Prestamo {
 	
 	private int idLibro;
 	private int idSocio;
 	private Date fecha;
-	private String devuelto;
+	private boolean devuelto;
 	
-	public Prestamo(int idLibro, int idSocio, Date fecha, String devuelto) {
+	public Prestamo(int idLibro, int idSocio, Date fecha, boolean devuelto) {
 		super();
 		this.idLibro = idLibro;
 		this.idSocio = idSocio;
@@ -45,11 +45,11 @@ public class Prestamo {
 		this.fecha = fecha;
 	}
 
-	public String getDevuelto() {
+	public boolean getDevuelto() {
 		return devuelto;
 	}
 
-	public void setDevuelto(String devuelto) {
+	public void setDevuelto(boolean devuelto) {
 		this.devuelto = devuelto;
 	}
 

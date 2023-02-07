@@ -4,9 +4,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 import clases.Conector;
 import clases.Libro;
+import clases.Prestamo;
 import clases.Socio;
 
 
@@ -192,6 +194,17 @@ public class GestorBBDD extends Conector  {
 		return socios;
 		
 	}
+	
+	public void insertarPrestamo(Prestamo prestamo) throws SQLException {
+		preparedSt= con.prepareStatement("INSERT INTO prestamos"
+				+ " (id_libro, id_socio, fecha, devuelto) VALUES (?, ?,?,?) ");
+		preparedSt.setInt(1, prestamo.getIdLibro());
+		preparedSt.setInt(2,prestamo.getIdSocio());
+		preparedSt.setDate(3,new java.sql.Date (prestamo.getFecha().getTime()));
+		
+	}
+	
+	
 	
 	
 }

@@ -2,6 +2,7 @@ package clases;
 
 
 
+import java.util.Date;
 import java.util.Scanner;
 
 
@@ -165,6 +166,32 @@ public class FormulariosDeDatos {
 		
 		return id;
 	}
+	
+	public static Prestamo pedirDatosPrestamo(Scanner scan) {
+		Prestamo prestamo = new Prestamo();
+		int id_libro;
+		int id_socio;
+		Date fecha = new Date();
+		boolean devuelto=false;
+		
+		System.out.println("Introduce la id del libro");
+		id_libro= scan.nextInt();
+		
+		System.out.println("Introduce la id del socio");
+		id_socio= scan.nextInt();
+		
+		prestamo.setIdLibro(id_libro);
+		prestamo.setIdSocio(id_socio);
+		prestamo.setFecha(fecha);
+		prestamo.setDevuelto(devuelto);
+		
+		
+		return prestamo;
+			
+		
+	}
+	
+	
 	
 	
 	
