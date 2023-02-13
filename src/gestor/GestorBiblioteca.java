@@ -27,7 +27,7 @@ public class GestorBiblioteca {
 
 				break;
 			case Menu.GESTIONAR_PRESTAMOS:
-				System.out.println("modulo no disponible");
+				GestorPrestamos.run(scan);
 				break;
 			
 			case Menu.SALIR:

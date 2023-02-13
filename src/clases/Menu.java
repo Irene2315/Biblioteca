@@ -73,7 +73,7 @@ public class Menu {
 		System.out.println(DEVOLVER_LIBRO+". Devolver libro");
 		System.out.println(COSULTAR_PRESTAMOS_NO_DEVUELTOS+ " .Consultar prestamos no devueltos");
 		System.out.println(CONSULTAR_PRESTAMOS_SOCIO+ ".consultar prestamos de un socio");
-		System.out.println(CONSULTAR_DISPONIBILIDAD_DE_LIBRO+"consultar disponibilidad de un libro");
+		System.out.println(CONSULTAR_DISPONIBILIDAD_DE_LIBRO+".consultar disponibilidad de un libro");
 		System.out.println("0. SALIR");
 		System.out.println("");
 	}

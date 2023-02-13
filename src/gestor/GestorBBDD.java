@@ -1,5 +1,6 @@
 package gestor;
 
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -201,12 +202,51 @@ public class GestorBBDD extends Conector  {
 		preparedSt.setInt(1, prestamo.getIdLibro());
 		preparedSt.setInt(2,prestamo.getIdSocio());
 		preparedSt.setDate(3,new java.sql.Date (prestamo.getFecha().getTime()));
+		preparedSt.setBoolean(4, prestamo.getDevuelto());
+		
+		preparedSt.execute();
 		
 	}
 	
 	
+
 	
-	
+	public void devolverLibro(int idLibro) throws SQLException {
+		Prestamo prestamo = prestamoNoDevuelto(idLibro);
+		
+		preparedSt =con.prepareStatement("UPDATE prestamos SET devuelto=true WHERE id_libro =? and id_socio=? and fecha=?") ;
+		
+			preparedSt.setInt(1, prestamo.getIdLibro());
+			preparedSt.setInt(2, prestamo.getIdSocio());
+			preparedSt.setDate(3,new java.sql.Date(prestamo.getFecha().getTime()));
+			preparedSt.execute();
+			
+		
+		
+	}
+
+	public Prestamo prestamoNoDevuelto(int idLibro) throws SQLException {
+		Prestamo prestamo = new Prestamo();
+		preparedSt= con.prepareStatement("SELECT * FROM prestamos WHERE id_libro = ? AND devuelto = false");
+		
+			preparedSt.setInt(1, idLibro);
+			ResultSet resultado= preparedSt.executeQuery();
+			
+			if(resultado.next()) {
+				prestamo.setIdLibro(idLibro);
+				prestamo.setIdSocio(resultado.getInt("id_socio"));
+				prestamo.setFecha(resultado.getDate("fecha"));
+				prestamo.setDevuelto(resultado.getBoolean("devuelto"));
+				
+			}
+		return prestamo;
+	}
 }
+	
+	
+	
+	
+	
+
 	
 

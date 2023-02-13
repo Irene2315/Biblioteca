@@ -29,6 +29,9 @@ public class Visor {
 	public static void mostrarSocio(Socio socio) {
 		System.out.println(socio);
 }
+	public static void motrarPrestamo(Prestamo prestamo) {
+		System.out.println(prestamo);
+	}
 	
 
 }
