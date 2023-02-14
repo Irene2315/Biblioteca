@@ -1,6 +1,7 @@
 package gestor;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import clases.FormulariosDeDatos;
@@ -15,6 +16,8 @@ public class GestorPrestamos {
 		GestorBBDD gestorBBDD = new  GestorBBDD();
 		Prestamo prestamo = new Prestamo();
 		int idLibro;
+		int idSocio;
+		ArrayList<Prestamo> prestamos= new ArrayList <Prestamo>();
 		int opcion;
 
 		do {
@@ -23,6 +26,7 @@ public class GestorPrestamos {
 
 			switch (opcion) {
 			case Menu.REALIZAR_PRESTAMO:
+				
 				prestamo= FormulariosDeDatos.pedirDatosPrestamo(scan);
 				gestorBBDD.conectar();
 				gestorBBDD.insertarPrestamo(prestamo);
@@ -30,6 +34,7 @@ public class GestorPrestamos {
 
 				break;
 			case Menu.DEVOLVER_LIBRO:
+				
 				idLibro = FormulariosDeDatos.pedirIdLibro(scan);
 				gestorBBDD.conectar();
 				gestorBBDD.devolverLibro(idLibro);
@@ -39,20 +44,31 @@ public class GestorPrestamos {
 				
 			case Menu.COSULTAR_PRESTAMOS_NO_DEVUELTOS:
 				
-				idLibro =FormulariosDeDatos.pedirIdLibro(scan);
+				
 				gestorBBDD.conectar();
-				prestamo=gestorBBDD.prestamoNoDevuelto(idLibro);
-				Visor.motrarPrestamo(prestamo);
+				prestamos=gestorBBDD.getPrestamosNoDebueltos();
+				Visor.mostrarPrestamos(prestamos);
 				gestorBBDD.cerrar();
 				
 				break;
 			case Menu.CONSULTAR_PRESTAMOS_SOCIO:
+				idSocio = FormulariosDeDatos.pedirIdSocio(scan);
+				gestorBBDD.conectar();
+				prestamos=gestorBBDD.getSocioPrestamos(idSocio);
+				Visor.mostrarPrestamos(prestamos);
+				gestorBBDD.cerrar();
 				
-				System.out.println("Cuarta opcion selecionada");
+				
+				
 				break;
 			case Menu.CONSULTAR_DISPONIBILIDAD_DE_LIBRO:
 
-				System.out.println("Cuarta opcion selecionada");
+				idLibro= FormulariosDeDatos.pedirIdLibro(scan);
+				gestorBBDD.conectar();
+				prestamo=gestorBBDD.disponibilidadLibro(idLibro);
+				Visor.mostrarPrestamo(prestamo);
+				gestorBBDD.cerrar();
+				
 				break;
 			case Menu.SALIR:
 				break;

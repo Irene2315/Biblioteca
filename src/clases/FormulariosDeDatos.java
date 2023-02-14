@@ -161,7 +161,7 @@ public class FormulariosDeDatos {
 	
 	public static int pedirIdSocio (Scanner scan) {
 		int id;
-		System.out.println("Introduce la ID del libro");
+		System.out.println("Introduce la ID del socio");
 		id= scan.nextInt();
 		
 		return id;

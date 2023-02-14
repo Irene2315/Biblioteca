@@ -241,6 +241,78 @@ public class GestorBBDD extends Conector  {
 			}
 		return prestamo;
 	}
+	
+	public ArrayList<Prestamo> getPrestamosNoDebueltos () throws SQLException{
+		preparedSt = con.prepareStatement("SELECT * FROM prestamos WHERE devuelto = false");
+		
+		
+		ResultSet resultado= preparedSt.executeQuery();
+		
+		ArrayList<Prestamo> prestamosNoDebueltos= new ArrayList <Prestamo>();
+		Prestamo prestamoNo= new Prestamo();
+		
+		while(resultado.next()) {
+			prestamoNo = new Prestamo();
+			prestamoNo.setIdLibro(resultado.getInt("id_libro"));
+			prestamoNo.setIdSocio(resultado.getInt("id_Socio"));
+			prestamoNo.setFecha(resultado.getDate("fecha"));
+			prestamoNo.setDevuelto(resultado.getBoolean("devuelto"));
+			
+			
+			prestamosNoDebueltos.add(prestamoNo);
+		}
+		
+		return prestamosNoDebueltos;
+		
+	}
+	
+	
+	
+	public ArrayList<Prestamo> getSocioPrestamos (int idSocio) throws SQLException{
+		preparedSt = con.prepareStatement("SELECT * FROM prestamos WHERE id_socio = ?");
+		
+		preparedSt.setInt(1, idSocio);
+		ResultSet resultado= preparedSt.executeQuery();
+		
+		ArrayList<Prestamo> prestamosSocio= new ArrayList <Prestamo>();
+		Prestamo prestamoSo= new Prestamo();
+		
+		while(resultado.next()) {
+			prestamoSo = new Prestamo();
+			prestamoSo.setIdLibro(resultado.getInt("id_libro"));
+			prestamoSo.setIdSocio(idSocio);
+			prestamoSo.setFecha(resultado.getDate("fecha"));
+			prestamoSo.setDevuelto(resultado.getBoolean("devuelto"));
+			
+			
+			prestamosSocio.add(prestamoSo);
+		}
+		
+		return prestamosSocio;
+		
+	}
+	
+	public Prestamo disponibilidadLibro (int idLibro) throws SQLException{
+		preparedSt = con.prepareStatement("SELECT * FROM prestamos WHERE id_libro = ?");
+		
+		
+		
+		Prestamo dispoLibro = new Prestamo();
+		
+		preparedSt.setInt(1, idLibro);
+		
+		ResultSet resultado= preparedSt.executeQuery();
+		
+		if(resultado.next()) {
+			dispoLibro.setIdLibro(idLibro);
+			dispoLibro.setIdSocio(resultado.getInt("id_socio"));
+			dispoLibro.setFecha(resultado.getDate("fecha"));
+			dispoLibro.setDevuelto(resultado.getBoolean("devuelto"));
+		}
+		
+		return dispoLibro;
+		
+	}
 }
 	
 	
